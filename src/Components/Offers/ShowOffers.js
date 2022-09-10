@@ -15,7 +15,7 @@ function ShowOffers() {
     `
 
     useEffect(() => {
-        axios.get('/api').then(data=>{
+        axios.get('http://api.cashcrow.in//api').then(data=>{
         const dataFilter  = data.data.stores.filter(item=>{
             if(search===""){
                 return item;
