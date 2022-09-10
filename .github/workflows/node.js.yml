@@ -15,7 +15,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: |
-          npm i
           pm2 restart 2
           pm2 save
           sudo service nginx restart
