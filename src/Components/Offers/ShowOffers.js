@@ -5,17 +5,20 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import Offer from './Offer';
+import TextField from '@mui/material/TextField';
+import { CircularProgress } from '@mui/material';
+import { getUserData } from '../../ConfigFiles/isLogin';
 
 function ShowOffers() {
-    const [offers, setoffers] = useState([])
-    const [search, setsearch] = useState("")
+    const [offers, setoffers] = useState([]);
+    const [search, setsearch] = useState("");
     const Wrapper = styled.div`
-    padding:12px;
-    margin:12px;
-    `
+    margin:7px;
+    `;
+    const [isLoading, setisLoading] = useState(true);
 
-    useEffect(() => {
-        axios.get('http://api.cashcrow.in//api').then(data=>{
+    const fetch = async() =>{
+        await axios.get('https://api.cashcrow.in/api').then(data=>{
         const dataFilter  = data.data.stores.filter(item=>{
             if(search===""){
                 return item;
@@ -25,17 +28,28 @@ function ShowOffers() {
                 }
             })    
             setoffers(dataFilter);
-        })
+        });
+        setisLoading(false);
+    }
+
+    useEffect(() => {
+        fetch();
+        console.log(getUserData());
     }, [search])
 
     const handler = (e)=>{
-        console.log(e.target.value)
         setsearch(e.target.value);
     }
     
   return (
+    isLoading ? 
+    <div style={{display: 'flex', justifyContent: 'center', marginTop:'70px'}}>
+        <CircularProgress size={'70px'}/> </div>
+   
+        :
     <Container>
-        <input type='text' onChange={handler} style={{marginTop:"20px",marginLeft:"-5%",width:"20%"}} />
+
+        <TextField id="outlined-basic" label="Search" variant="outlined" type='text' onChange={handler} style={{marginLeft: '71%',marginTop:"50px",width:"330px"}} />
         <Row>
 
     {

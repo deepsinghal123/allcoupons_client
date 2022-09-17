@@ -7,12 +7,20 @@ const Wrapper = styled.div`
 width:100%;
 height:10px;
 background-color:#e6e1f5;
-`
+`;
+
+const WrapperCmp = styled.div`
+width:100%;
+height:100px;
+`;
+
+
 function Content() {
   return (
-    <><Crouselcmp />
+    <>
     <Wrapper />
     <ShowOffers />
+    <WrapperCmp />
     </>
   )
 }

@@ -1,45 +1,60 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import styled from 'styled-components';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
-export const Register = () => {
-  const Wrapper = styled.div`
-        text-align: center;
-        display: block;
-    `;
-    
+export default function Register({open,setOpen,submitHandler}) {
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Wrapper>
-      <Form style={{
-        width: '40%', display: 'inline-block',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        textAlign: 'left',
-        marginTop: '110px',
-        padding: '20px',
-        border: '2px solid black'
-      }}><h4>Register</h4>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control type="password" placeholder="Confirm Password" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Register
-        </Button>
-      </Form>
-    </Wrapper>
+    <div>
+      <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
+        <DialogTitle>Register</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            id="name"
+            label="User Name"
+            type="text"
+            fullWidth
+            variant="standard"
+            autoComplete='off'
+          />
+          <TextField
+            id="email"
+            label="Email Address"
+            type="email"
+            fullWidth
+            variant="standard"
+            autoComplete='off'
+          />
+          <TextField
+            id="password"
+            label="Password"
+            type="password"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            id="cpassword"
+            label="Confirm Password"
+            type="password"
+            fullWidth
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} variant="contained" color="error">Cancel</Button>
+          <Button onClick={submitHandler} variant="outlined" color="primary">Register</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 }
-
-export default Register;

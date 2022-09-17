@@ -3,7 +3,7 @@ import Content from './MainPage/Content'
 import Footer from './MainPage/Footer'
 import Header from './MainPage/Header'
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Switch,
   Route
 } from "react-router-dom";
@@ -13,15 +13,27 @@ import Register from './Loginandregister/Register';
 function Main() {
   return (
     <>
-      <Header />
-      <Switch>
-        <Route path='/home' component={Content} />
-        <Route path='/login' component={Login} />
-        <Route path='/register' component={Register} />
-        <Route component={Content} />
-      </Switch>
-      <Footer />
-   
+      <BrowserRouter>
+        <Header />
+        <div className="mb-2 mt-2" style={{ marginTop: 40 }}>
+          <Switch>
+            <Route exact path="/">
+              <Content />
+            </Route>
+            <Route exact path="/Home">
+              <Content />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+          </Switch>
+        </div>
+        <Footer />
+      </BrowserRouter>
+
     </>
   )
 }
