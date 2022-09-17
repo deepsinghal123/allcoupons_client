@@ -18,7 +18,7 @@ function ShowOffers() {
     const [isLoading, setisLoading] = useState(true);
 
     const fetch = async() =>{
-        await axios.get('https://api.cashcrow.in/api').then(data=>{
+        await axios.get('https://api.cashcrow.in/api_campaign').then(data=>{
         const dataFilter  = data.data.stores.filter(item=>{
             if(search===""){
                 return item;
