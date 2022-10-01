@@ -7,7 +7,6 @@ import axios from 'axios';
 import Offer from './Offer';
 import TextField from '@mui/material/TextField';
 import { CircularProgress } from '@mui/material';
-import { getUserData } from '../../ConfigFiles/isLogin';
 
 function ShowOffers() {
     const [offers, setoffers] = useState([]);
@@ -16,6 +15,8 @@ function ShowOffers() {
     margin:7px;
     `;
     const [isLoading, setisLoading] = useState(true);
+    const [offerWidth, setOfferWidth] = useState("330px");
+    const [offerMargin, setofferMargin] = useState("71%");
 
     const fetch = async() =>{
         await axios.get('https://api.cashcrow.in/api_campaign').then(data=>{
@@ -32,9 +33,15 @@ function ShowOffers() {
         setisLoading(false);
     }
 
+    const handleResize = () => {
+        setOfferWidth(window.innerWidth > 768 ? "330px":"20rem");
+        setofferMargin(window.innerWidth > 768 ? "71%":"3%")
+      }
+
     useEffect(() => {
         fetch();
-        console.log(getUserData());
+        handleResize();
+        window.addEventListener("resize", handleResize)
     }, [search])
 
     const handler = (e)=>{
@@ -45,10 +52,9 @@ function ShowOffers() {
     isLoading ? 
     <div style={{display: 'flex', justifyContent: 'center', marginTop:'70px'}}>
         <CircularProgress size={'70px'}/> </div>
-   
         :
     <Container>
-        <TextField id="outlined-basic" label="Search" variant="outlined" type='text' onChange={handler} style={{marginLeft: window.innerWidth > 768 ? '71%' : '3%',marginTop:"50px",width:window.innerWidth > 768 ? "330px":"20rem"}} />
+        <TextField id="outlined-basic" label="Search" variant="outlined" type='text' onChange={handler} style={{marginLeft: offerMargin,marginTop:"50px",width:offerWidth}} />
         <Row>
 
     {

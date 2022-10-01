@@ -91,6 +91,7 @@ const ResponsiveAppBar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          <LoadingIcon />
           <Typography
             variant="h6"
             noWrap
@@ -110,7 +111,7 @@ const ResponsiveAppBar = () => {
           >
             CashCrow
           </Typography>
-
+          
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -147,7 +148,7 @@ const ResponsiveAppBar = () => {
               ))}
             </Menu>
           </Box>
-          <LoadingIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          
           <Typography
             variant="h5"
             noWrap
