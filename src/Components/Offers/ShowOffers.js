@@ -48,8 +48,7 @@ function ShowOffers() {
    
         :
     <Container>
-
-        <TextField id="outlined-basic" label="Search" variant="outlined" type='text' onChange={handler} style={{marginLeft: '71%',marginTop:"50px",width:"330px"}} />
+        <TextField id="outlined-basic" label="Search" variant="outlined" type='text' onChange={handler} style={{marginLeft: window.innerWidth > 768 ? '71%' : '3%',marginTop:"50px",width:window.innerWidth > 768 ? "330px":"20rem"}} />
         <Row>
 
     {

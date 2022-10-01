@@ -13,7 +13,7 @@ function Offer({data}) {
   }
   payout(data.payout)
   return (
-    <Card style={{ width: '12rem' }} onClick={()=>{window.open(data.url,'_blank')}}>
+    <Card style={{ width: window.innerWidth > 768 ? '12rem':'20rem' }} onClick={()=>{window.open(data.url,'_blank')}}>
       <Card.Img variant="top" src={data.logo} style={{width:'100%',height:"100px"}}/>
       <Card.Body>
         <Card.Title>{data.merchant}</Card.Title>
