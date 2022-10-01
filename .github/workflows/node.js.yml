@@ -15,7 +15,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: |
-          yarn install
           pm2 restart 6
           pm2 save
           sudo service nginx restart

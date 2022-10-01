@@ -4,24 +4,22 @@ import styled from 'styled-components';
 
 const Wrapper = styled.img`
 width:100%;
-height:500px;
+height:340px;
 `
 function Crouselcmp() {
   return (
-    <Carousel>
-      <Carousel.Item>
-        <Wrapper
-          className="d-block w-100"
-          src="https://d168jcr2cillca.cloudfront.net/uploadimages/coupons/11009-ApolloPharmacy_600x300_Banner.jpg"
-          alt="First slide"
-            onClick={()=>{window.open('https://www.apollopharmacy.in/','_black')}}
-        />
+    <Carousel style={{margin:"20px"}}>
+      <Carousel.Item >
+        <div style={{display:"flex"}}>
+      <a href="https://track.clickonik.com/click?campaign_id=244&pub_id=7590&creative_name=728x90.jpg&crtv_id=6109492e7771e73d960e47b8" target="_blank"><img src="https://static.vnative.co/images/6109492e39a1e.jpg" width="728"height="340" border="0" /></a>
+      <a href="https://track.clickonik.com/click?campaign_id=244&pub_id=7590&creative_name=728x90.jpg&crtv_id=6109492e7771e73d960e47b8" target="_blank"><img src="https://static.vnative.co/images/6109492e39a1e.jpg" width="728"height="340" border="0" /></a>
+      </div>
       </Carousel.Item>
       
       <Carousel.Item>
         <Wrapper
           className="d-block w-100"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc8bOG8Sf3ojh_Yw4oqkz8UqBl3-ayI3_eEw&usqp=CAU"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTzKX0xW0wI8DZM9UExceBEsS2PajmThsBQ&usqp=CAU"
           alt="First slide"
             onClick={()=>{window.open('https://www.boddess.com/','_black')}}
         />
@@ -30,9 +28,9 @@ function Crouselcmp() {
       <Carousel.Item>
         <Wrapper
           className="d-block w-100"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPn90ngt0iJeMuaupMJVK3r3nK5dnlolhlSA&usqp=CAU"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEV0EOrsGcdsAEOfJbwjc2jCZdoq2-TVy6uA&usqp=CAU"
           alt="First slide"
-            onClick={()=>{window.open('https://mamaearth.in','_black')}}
+            onClick={()=>{window.open('https://www.myntra.com/','_black')}}
         />
       </Carousel.Item>
     </Carousel>

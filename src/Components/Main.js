@@ -10,6 +10,7 @@ import {
 import Login from './Loginandregister/Login';
 import Register from './Loginandregister/Register';
 import ShowOffers from './Offers/ShowOffers';
+import Crouselcmp from './MainPage/Crouselcmp';
 
 function Main() {
   return (
@@ -22,6 +23,7 @@ function Main() {
             <iframe src='https://inrdeals.com/dynamic/ad-728x90?user=dee542885700' height='90px' width='100%' frameborder='0' allowTransparency='true' scrolling='no'></iframe>
           }
         </div>
+          <Crouselcmp />
         <div className="mb-2 mt-2" style={{ marginTop: 40 }}>
           <Switch>
             <Route exact path="/">
