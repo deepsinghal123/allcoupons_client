@@ -8,9 +8,11 @@ import axios from 'axios';
 import Offer from './Offer';
 import TextField from '@mui/material/TextField';
 import { Button, CircularProgress } from '@mui/material';
+import { useHistory } from 'react-router-dom';
 
 function FewOffers() {
     const [offers, setoffers] = useState([]);
+    const history = useHistory();
     const Wrapper = styled.div`
     margin:7px;
     `;
@@ -47,7 +49,7 @@ function FewOffers() {
     }
         </Row>
         <div style={{textAlign:"center",width:"100%"}}>
-            <Button variant="outlined">View more</Button>
+            <Button variant="outlined" onClick={()=>{history.push('/offers')}}>View more</Button>
         </div>
     </Container>
   )

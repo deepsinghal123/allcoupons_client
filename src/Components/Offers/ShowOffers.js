@@ -54,7 +54,7 @@ function ShowOffers() {
         <CircularProgress size={'70px'}/> </div>
         :
     <Container>
-        <TextField id="outlined-basic" label="Search" variant="outlined" type='text' onChange={handler} style={{marginLeft: offerMargin,marginTop:"50px",width:offerWidth}} />
+        <TextField id="outlined-basic" label="Search" variant="outlined" type='text' onChange={handler} style={{marginLeft: offerMargin,marginTop:"11px",width:offerWidth}} />
         <Row>
 
     {

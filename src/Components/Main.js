@@ -9,12 +9,19 @@ import {
 } from "react-router-dom";
 import Login from './Loginandregister/Login';
 import Register from './Loginandregister/Register';
+import ShowOffers from './Offers/ShowOffers';
 
 function Main() {
   return (
     <>
       <BrowserRouter>
         <Header />
+        <div style={{display:"flex",paddingLeft:window.innerWidth <=500?"11%":"25%",paddingTop:"20px"}}>
+          {
+            window.innerWidth <=500?<iframe src='https://inrdeals.com/dynamic/ad-300x250?user=dee542885700' height='90px' width='100%' frameborder='0' allowTransparency='true' scrolling='no'></iframe>:
+            <iframe src='https://inrdeals.com/dynamic/ad-728x90?user=dee542885700' height='90px' width='100%' frameborder='0' allowTransparency='true' scrolling='no'></iframe>
+          }
+        </div>
         <div className="mb-2 mt-2" style={{ marginTop: 40 }}>
           <Switch>
             <Route exact path="/">
@@ -28,6 +35,9 @@ function Main() {
             </Route>
             <Route exact path="/register">
               <Register />
+            </Route>
+            <Route exact path="/Offers">
+              <ShowOffers />
             </Route>
           </Switch>
         </div>
