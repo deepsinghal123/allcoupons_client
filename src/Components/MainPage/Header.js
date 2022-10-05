@@ -19,6 +19,7 @@ import Register from '../Loginandregister/Register';
 import axios from 'axios';
 import { encryptStorage } from '../../ConfigFiles/EncryptStorage';
 import {getUserData, isLogin, Logout} from '../../ConfigFiles/isLogin';
+import Swal from "sweetalert2";  
 
 const pages = isLogin()?['Home','Dashboard']:['Home', 'Login', 'Register'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -70,21 +71,77 @@ const ResponsiveAppBar = () => {
     history.push(`/${e.target.id}`);
   }
 
-  const formLoginSubmit=(data)=>{
-    axios.post('https://api.cashcrow.in/api/loginuser',data).then(res=>{
-      if(res.data.success === 'false'){
-        alert('incorrect username or password!');
+  const formLoginSubmit=async(data)=>{
+    axios.post('https://api.cashcrow.in/api/loginuser',data).then(async res=>{
+      if(res.data.success === false){
+        setOpenLogin(false);
+        await Swal.fire({
+          icon: 'error',   
+          text: 'incorrect username or password!',
+          showConfirmButton: false,  
+          timer: 3000 
+        });
       }
       else{
-        alert(res.data.message);
         encryptStorage.setItem('userDetail_cashcrow',{customer_details:res.data.customer_details,token:res.data.token});
+        setOpenLogin(false);
+        await Swal.fire({
+          icon: 'success',   
+          text: res.data.message,
+          showConfirmButton: false,
+          timer:3000
+        });
         window.location.reload('');
       }
     })
   }
 
-  const formRegisterSubmit=()=>{
-
+  const formRegisterSubmit=(data)=>{
+    console.log(data)
+    if(data.firstname==""  || data.lastname=="" || data.mobilenumber=="" || data.gender=="" || data.email=="" || data.password=="" || data.confirmpassword ==""){
+      setOpenRegister(false);
+      Swal.fire({
+        icon: 'error',   
+        text: 'empty feild!',
+        showConfirmButton: false,  
+        timer: 1500 
+      });
+      return;
+    }
+    else if(data.password != data.confirmpassword){
+      setOpenRegister(false);
+      Swal.fire({
+        icon: 'error',   
+        text: 'Password  and Confirm Password not match!',
+        showConfirmButton: false,  
+        timer: 1500 
+      });
+      return;
+    }
+    else{
+      console.log(data)
+      axios.post('https://api.cashcrow.in/api/registeruser',data).then(async res=>{
+      if(res.data.success === false){
+        setOpenRegister(false);
+        await Swal.fire({
+          icon: 'error',   
+          text: 'incorrect username or password!',
+          showConfirmButton: false,  
+          timer: 3000 
+        });
+      }
+      else{
+        setOpenRegister(false);
+        await Swal.fire({
+          icon: 'success',   
+          text: res.data.message,
+          showConfirmButton: false,
+          timer:3000
+        });
+        window.location.reload('');
+      }
+    })
+    }
   }
 
   return (

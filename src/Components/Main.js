@@ -11,6 +11,7 @@ import Login from './Loginandregister/Login';
 import Register from './Loginandregister/Register';
 import ShowOffers from './Offers/ShowOffers';
 import Crouselcmp from './MainPage/Crouselcmp';
+import ShowCoupons from './Coupons/ShowCoupons';
 
 function Main() {
   return (
@@ -40,6 +41,9 @@ function Main() {
             </Route>
             <Route exact path="/Offers">
               <ShowOffers />
+            </Route>
+            <Route exact path="/Coupons">
+              <ShowCoupons />
             </Route>
           </Switch>
         </div>

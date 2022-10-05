@@ -3,6 +3,7 @@ import Crouselcmp from './Crouselcmp'
 import styled from 'styled-components';
 import ShowOffers from '../Offers/ShowOffers';
 import FewOffers from '../Offers/FewOffers';
+import FewCoupons from '../Coupons/FewCoupons';
 
 const Wrapper = styled.div`
 width:auto;
@@ -22,6 +23,8 @@ function Content() {
     <>
     <Wrapper />
     <FewOffers />
+    <Wrapper />
+    <FewCoupons />
     <Wrapper />
     <WrapperCmp />
     </>

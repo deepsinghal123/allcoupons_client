@@ -6,6 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Divider } from '@mui/material';
+import Swal from "sweetalert2";  
 
 export default function Login({open,setOpen,submitHandler}) {
 
@@ -18,7 +19,14 @@ export default function Login({open,setOpen,submitHandler}) {
   
   const handle = () => {
     if(email === '' || password ===''){
-      alert('empty feild!')
+      //alert('empty feild!');
+      handleClose();
+      Swal.fire({
+        icon: 'error',   
+        text: 'empty feild!',
+        showConfirmButton: false,  
+        timer: 1500 
+      });  
     }
     else{
       submitHandler({email:email,password:password});
