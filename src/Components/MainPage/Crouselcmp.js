@@ -8,6 +8,12 @@ height:340px;
 `
 function Crouselcmp() {
   return (
+    <><div style={{display:"flex",paddingLeft:window.innerWidth <=500?"11%":"25%",paddingTop:"20px"}}>
+    {
+      window.innerWidth <=500?<iframe src='https://inrdeals.com/dynamic/ad-300x250?user=dee542885700' height='90px' width='100%' frameborder='0' allowTransparency='true' scrolling='no'></iframe>:
+      <iframe src='https://inrdeals.com/dynamic/ad-728x90?user=dee542885700' height='90px' width='100%' frameborder='0' allowTransparency='true' scrolling='no'></iframe>
+    }
+  </div>
     <Carousel style={{margin:"20px"}}>
       <Carousel.Item >
         <div style={{display:"flex"}}>
@@ -34,6 +40,7 @@ function Crouselcmp() {
         />
       </Carousel.Item>
     </Carousel>
+    </>
   )
 }
 

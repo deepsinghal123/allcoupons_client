@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import Coupon from './Coupon';
 import TextField from '@mui/material/TextField';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress,Button } from '@mui/material';
 
 function ShowCoupons() {
     const [Coupons, setCoupons] = useState([]);
@@ -17,9 +17,21 @@ function ShowCoupons() {
     const [isLoading, setisLoading] = useState(true);
     const [CouponWidth, setCouponWidth] = useState("330px");
     const [CouponMargin, setCouponMargin] = useState("71%");
+    const [prev, setprev] = useState(null);
+    const [next, setnext] = useState(null);
 
-    const fetch = async() =>{
-        await axios.get('https://api.cashcrow.in/api_coupon').then(data=>{
+    const fetch = async(dataUrl) =>{
+        let searchUrl = "";
+        if(dataUrl.indexOf('?')!==-1){
+            searchUrl = `${dataUrl}&token=65382fdc6fc8ecff5b74f0d88c6e09741ef44d62&id=dee542885700`;
+        }
+        else{
+            searchUrl = `${dataUrl}?token=65382fdc6fc8ecff5b74f0d88c6e09741ef44d62&id=dee542885700`;
+        }
+        setisLoading(true);
+        await axios.post('https://api.cashcrow.in/get_api_data',{url:searchUrl}).then(data=>{
+        setprev(data.data.prev_page_url);
+        setnext(data.data.next_page_url);
         const dataFilter  = data.data.data.filter(item=>{
             if(search===""){
                 return item;
@@ -39,7 +51,7 @@ function ShowCoupons() {
       }
 
     useEffect(() => {
-        fetch();
+        fetch("https://inrdeals.com/api/v1/coupon-feed");
         handleResize();
         window.addEventListener("resize", handleResize)
     }, [search])
@@ -50,8 +62,20 @@ function ShowCoupons() {
     }
     
   return (
-      <Container>
+      <Container style={{marginBottom:"100px"}}>
         <TextField id="outlined-basic" label="Search" variant="outlined" type='text' onChange={handler} style={{marginLeft: CouponMargin,marginTop:"11px",width:CouponWidth}} />
+        <Row>
+            <Col>
+            <Button onClick={()=>fetch(prev)} disabled={prev===null} >
+                Prev
+            </Button>
+            </Col>
+            <Col style={{position:"relative"}}>
+            <Button style={{position: "absolute",right: "47px",top: "5px"}} onClick={()=>fetch(next)} disabled={next===null}>
+                Next
+            </Button>
+            </Col>
+        </Row>
         <Row>
    {     isLoading ? 
         <div style={{display: 'flex', justifyContent: 'center', marginTop:'70px'}}>

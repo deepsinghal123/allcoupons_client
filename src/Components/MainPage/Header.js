@@ -11,7 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { LoadingIcon } from './LogoIcon';
 import { useHistory } from 'react-router-dom';
 import Login from '../Loginandregister/Login';
@@ -20,6 +19,7 @@ import axios from 'axios';
 import { encryptStorage } from '../../ConfigFiles/EncryptStorage';
 import {getUserData, isLogin, Logout} from '../../ConfigFiles/isLogin';
 import Swal from "sweetalert2";  
+import { Mixpanel } from '../../ConfigFiles/Mixpanel';
 
 const pages = isLogin()?['Home','Dashboard']:['Home', 'Login', 'Register'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -81,6 +81,7 @@ const ResponsiveAppBar = () => {
           showConfirmButton: false,  
           timer: 3000 
         });
+        Mixpanel.track('Unsuccessful login');
       }
       else{
         encryptStorage.setItem('userDetail_cashcrow',{customer_details:res.data.customer_details,token:res.data.token});
@@ -90,6 +91,10 @@ const ResponsiveAppBar = () => {
           text: res.data.message,
           showConfirmButton: false,
           timer:3000
+        });
+        Mixpanel.track('Successful login',{
+          "first_name": res.data.customer_details.first_name,
+          "last_name": res.data.customer_details.last_name,
         });
         window.location.reload('');
       }
@@ -116,6 +121,7 @@ const ResponsiveAppBar = () => {
         showConfirmButton: false,  
         timer: 1500 
       });
+      Mixpanel.track('Unsuccessful register');
       return;
     }
     else{
@@ -137,6 +143,10 @@ const ResponsiveAppBar = () => {
           text: res.data.message,
           showConfirmButton: false,
           timer:3000
+        });
+        Mixpanel.track('Successful register',{
+          "first_name": res.data.customer_details.first_name,
+          "last_name": res.data.customer_details.last_name,
         });
         window.location.reload('');
       }

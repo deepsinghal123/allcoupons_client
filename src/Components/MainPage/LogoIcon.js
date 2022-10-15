@@ -1,7 +1,7 @@
 
 export const LoadingIcon = () => {
     return (
-        <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"  enable-background="new 0 0 512 512" width={"40px"} fill="#fff">
+        <svg  version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"  enableBackground="new 0 0 512 512" width={"40px"} fill="#fff">
   <g>
     <g>
       <path d="M371.9,144L475,171.1L501,68l-19.8-5.2l-16.9,64.3C421.1,57.4,344,11,256,11C120.7,11,11,120.7,11,256    c0,135.3,109.7,245,245,245c90.3,0,169.1-48.8,211.6-121.5l-17.7-9.6c-39.1,66.4-111.3,111-193.9,111    C131.8,480.9,31.1,380.2,31.1,256S131.8,31.1,256,31.1c83.3,0,156.1,45.3,194.9,112.7l-73.8-19.6L371.9,144z"/>

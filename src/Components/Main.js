@@ -12,26 +12,26 @@ import Register from './Loginandregister/Register';
 import ShowOffers from './Offers/ShowOffers';
 import Crouselcmp from './MainPage/Crouselcmp';
 import ShowCoupons from './Coupons/ShowCoupons';
+import TemporaryDrawer from './MainPage/TemporaryDrawer';
 
 function Main() {
   return (
     <>
       <BrowserRouter>
         <Header />
-        <div style={{display:"flex",paddingLeft:window.innerWidth <=500?"11%":"25%",paddingTop:"20px"}}>
-          {
-            window.innerWidth <=500?<iframe src='https://inrdeals.com/dynamic/ad-300x250?user=dee542885700' height='90px' width='100%' frameborder='0' allowTransparency='true' scrolling='no'></iframe>:
-            <iframe src='https://inrdeals.com/dynamic/ad-728x90?user=dee542885700' height='90px' width='100%' frameborder='0' allowTransparency='true' scrolling='no'></iframe>
-          }
-        </div>
-          <Crouselcmp />
         <div className="mb-2 mt-2" style={{ marginTop: 40 }}>
           <Switch>
             <Route exact path="/">
+              <>
+              <Crouselcmp />
               <Content />
+              </>
             </Route>
             <Route exact path="/Home">
+              <>
+              <Crouselcmp />
               <Content />
+              </>
             </Route>
             <Route exact path="/login">
               <Login />
@@ -44,6 +44,9 @@ function Main() {
             </Route>
             <Route exact path="/Coupons">
               <ShowCoupons />
+            </Route>
+            <Route exact path="/Dashboard">
+              <TemporaryDrawer />
             </Route>
           </Switch>
         </div>

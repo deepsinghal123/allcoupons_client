@@ -22,8 +22,14 @@ function Content() {
   return (
     <>
     <Wrapper />
+    <div style={{textAlign:"center",fontSize:"20px"}}>
+      <u>Offers</u>
+      </div>
     <FewOffers />
     <Wrapper />
+    <div style={{textAlign:"center",fontSize:"20px"}}>
+      <u>Coupons</u>
+      </div>
     <FewCoupons />
     <Wrapper />
     <WrapperCmp />
